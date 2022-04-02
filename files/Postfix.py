@@ -16,12 +16,16 @@ class Postfix:
             "sin": 4,
             "tg": 4,
             "exp": 4,
+            "ln": 4,
         }
 
     def record(self, lexems):
+        j = -1
         for i in lexems:
+            j += 1
             try:
-                float(i)
+                if i != "x":
+                    float(i)
                 self.string.append(i)
             except:
                 if i == "(":
@@ -33,6 +37,8 @@ class Postfix:
                             break
                         self.string.append(a)
                 elif i in self.Priority:
+                    if (i == "-") and ((j == 0) or (lexems[j-1] in self.Priority)):
+                        i = "~"
                     prioritet = self.Priority[i]
                     while True:
                         try:

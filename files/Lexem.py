@@ -4,7 +4,7 @@ class Lexem():
     def __init__(self):
         self.buffer = []
         self.current_state = ""
-        self.signs = ["+", "-", "=", "/", "*", "^"]
+        self.signs = ["+", "-", "=", "/", "*", "^", "~"]
         self.text = {
             "sin": 1,
             "cos": 1,
@@ -14,6 +14,7 @@ class Lexem():
         }
 
     def parse(self, s):
+        s = "".join(s.split())
         s += " "
         symbol = ""
         i = 0
@@ -42,6 +43,8 @@ class Lexem():
                     self.buffer.append(symbol)
                     symbol = ""
                     self.buffer.append(j)
+                elif j == "x" and s[i-1] != "e":
+                    self.buffer.append("x")
                 else:
                     symbol += j
 

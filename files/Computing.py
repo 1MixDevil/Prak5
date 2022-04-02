@@ -13,7 +13,8 @@ class Computing():
             "exp": self.exp,
             "cos": self.cos,
             "sin": self.sin,
-            "IM": self.minus_I,
+            "ln": self.ln,
+            "~": self.minus_I,
         }
         self.minus = 0
         self.stack = Stack()
@@ -25,6 +26,7 @@ class Computing():
             elif i in self.options:
                 self.options[i]()
         return self.stack.array
+
     def plus(self):
         a = float(self.stack.pop())
         b = float(self.stack.pop())
@@ -39,6 +41,10 @@ class Computing():
         a = float(self.stack.pop())
         b = float(self.stack.pop())
         self.stack.push(str(b / a))
+
+    def ln(self):
+        a = float(self.stack.pop())
+        self.stack.push(math.log(a))
 
     def degree(self):
         a = float(self.stack.pop())
@@ -63,4 +69,5 @@ class Computing():
         self.stack.push(str(math.cos(a)))
 
     def minus_I(self):
-        self.stack.push(str(-1 * self.stack.pop()))
+        self.stack.push(str(-1 * float(self.stack.pop())))
+
