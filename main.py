@@ -1,11 +1,13 @@
 import math
+import traceback
+
 from files.Inequality import inequality
 from files.Postfix import Postfix
 from files.Lexem import Lexem
 from files.Stack import Stack
 from files.Computing import Computing
 
-equation = input("Привет! Введи какое-то уравнение: \n")
+equation = input("Привет! Введи какое-то уравнение: \n").lower()
 try:
     a = Lexem()
     c = a.parse(equation)
@@ -24,5 +26,5 @@ try:
         else:
             print(a.find())
 
-except:
-    print("Что-то пошло не так :(")
+except Exception as e:
+    print('Ошибка:\n', traceback.format_exc())

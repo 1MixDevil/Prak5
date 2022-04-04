@@ -1,6 +1,6 @@
 
 
-class Lexem():
+class Lexem:
     def __init__(self):
         self.buffer = []
         self.current_state = ""

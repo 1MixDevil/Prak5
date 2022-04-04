@@ -8,7 +8,7 @@ class inequality:
     def __init__(self, a, b, stroka):
         self.a = a
         self.b = b
-        self.E = 0.00001
+        self.E = 0.001
         self.stroka = stroka
 
     def f(self, chisl):

@@ -13,6 +13,7 @@ class Computing():
             "exp": self.exp,
             "cos": self.cos,
             "sin": self.sin,
+            "tg": self.tg,
             "ln": self.ln,
             "~": self.minus_I,
         }
@@ -42,14 +43,18 @@ class Computing():
         b = float(self.stack.pop())
         self.stack.push(str(b / a))
 
+    def tg(self):
+        a = float(self.stack.pop())
+        self.stack.push(math.tan(a))
+
     def ln(self):
         a = float(self.stack.pop())
         self.stack.push(math.log(a))
 
     def degree(self):
         a = float(self.stack.pop())
-        b = float(self.stack.pop())
-        self.stack.push(str(b ** a))
+        b = round(float(self.stack.pop()), 5)
+        self.stack.push(str(round((b ** a), 5)))
 
     def multiply(self):
         a = float(self.stack.pop())
